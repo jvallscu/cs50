@@ -237,7 +237,7 @@ def sell():
     """Sell shares of stock"""
 
     if request.method == "GET":
-        symbols = db.execute("SELECT DISTINCT symbol FROM shares_log")
+        symbols = db.execute("SELECT DISTINCT symbol FROM shares_log WHERE user_id = (?)", session["user_id"])
         #print(symbols)
         return render_template("sell.html", symbols=symbols)
 
