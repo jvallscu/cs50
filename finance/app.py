@@ -49,7 +49,7 @@ def index():
 
     list = []
     stock_total = 0
-    symbols_list = db.execute("SELECT DISTINCT symbol, company_name FROM shares_log")
+    symbols_list = db.execute("SELECT DISTINCT symbol, company_name FROM shares_log WHERE user_id = (?)", session["user_id"])
 
     #iterates through unique stock symbols
     for i in range(len(symbols_list)):
